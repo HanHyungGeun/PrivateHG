@@ -95,11 +95,10 @@ public class EnemyManager : MonoBehaviour
                     trash.transform.SetParent(mTableCtrl.transform);
                     trash.transform.position = mTableCtrl.GetTrashPos();
                     mTableCtrl.SetTrash(trash.gameObject);
-
-                    burger.SetParent(null);
-                    burger.gameObject.SetActive(false);
+                     
+                    burger.GetComponent<PoolData>().AddPool();
                     yield return mWait_SpawnDelay;
-                    enemy.gameObject.SetActive(false);
+                    enemy.GetComponent<PoolData>().AddPool();
                     yield return StartCoroutine(cCheckTrash());
                 }
                 else
