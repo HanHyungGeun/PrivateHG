@@ -87,14 +87,13 @@ public class RscModule : MonoBehaviour
 public class PoolData : MonoBehaviour
 {
     private RscModule mRscModule;
-
-    public eRscType Type;
-    public int Idx;
+    private eRscType mType;
+    private int mIdx;
 
     public void SetData(eRscType t, int i)
     {
-        Type = t;
-        Idx = i;
+        mType = t;
+        mIdx = i;
     }
 
     private void OnDisable()
@@ -102,9 +101,9 @@ public class PoolData : MonoBehaviour
         AddPool();
     }
 
-    public void AddPool() => mRscModule?.GetPool(Type, Idx).Add(this.gameObject);
+    public void AddPool() => mRscModule?.GetPool(mType, mIdx).Add(this.gameObject);
     public void SetMoudle(RscModule module) => mRscModule = module;
 
-    public eRscType GetRscType() => Type;
-    public int GetRscIdx() => Idx;
+    public eRscType GetRscType() => mType;
+    public int GetRscIdx() => mIdx;
 }
